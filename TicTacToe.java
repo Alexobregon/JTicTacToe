@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 public class TicTacToe {
 
 	public static void main(String[] args) {
@@ -18,6 +19,10 @@ public class TicTacToe {
 		System.out.println(pos);
 
 		placePiece(gameBoard, pos, "player");
+
+		Random rand = new Random();
+		int cpuPos = rand.nextInt(9) +1;
+		placePiece(gameBoard, cpuPos, "cpu");
 		
 		
 	}
