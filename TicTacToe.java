@@ -31,7 +31,8 @@ public class TicTacToe {
 			int cpuPos = rand.nextInt(9) +1;
 			placePiece(gameBoard, cpuPos, "cpu");
 
-			checkWinner();
+			String result = checkWinner();
+			System.out.println(result);
 		}
 		
 		
@@ -53,8 +54,10 @@ public class TicTacToe {
 		
 		if (user.equals("player")) {
 			symbol = 'X';
+			playerPositions.add(pos);
 		} else if (user.equals("cpu")) {
 			symbol = 'O';
+			cpuPositions.add(pos);
 		}
 		
 		switch(pos) {
