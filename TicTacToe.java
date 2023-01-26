@@ -21,17 +21,34 @@ public class TicTacToe {
 		while(true) {
 			System.out.println("Enter your placement (1-9)");
 			Scanner scan = new Scanner(System.in);
-			int pos = scan.nextInt();
+			int playerPos = scan.nextInt();
+			while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPos)) {
+				System.out.println("position taken! enter a currect position");
+				playerPos = scan.nextInt();
+			}
 			
-			System.out.println(pos);
+			System.out.println(playerPos);
 			
-			placePiece(gameBoard, pos, "player");
+			placePiece(gameBoard, playerPos, "player");
+			String result = checkWinner();
+			if(result.length() > 0) {
+				System.out.println(result);
+				break;
+			}
 			
 			Random rand = new Random();
 			int cpuPos = rand.nextInt(9) +1;
+			while(playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos)) {
+			
+				cpuPos = rand.nextInt(9) +1;
+			}
 			placePiece(gameBoard, cpuPos, "cpu");
 
-			String result = checkWinner();
+			result = checkWinner();
+			if(result.length() > 0) {
+				System.out.println(result);
+				break;
+			}
 			System.out.println(result);
 		}
 		
@@ -108,7 +125,7 @@ public class TicTacToe {
 		for(List l : winning) {
 			if(playerPositions.containsAll(l)) {
 				return "You Win";
-			} else if(cpuPositions.contains(l)) {
+			} else if(cpuPositions.containsAll(l)) {
 				return "CPU wins";
 			} else if(playerPositions.size() + cpuPositions.size() == 9) {
 				return "No one wins";
