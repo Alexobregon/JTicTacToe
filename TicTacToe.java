@@ -52,7 +52,6 @@ public class TicTacToe {
 			System.out.println(result);
 		}
 		
-		
 	}
 
 	public static void printGameBoard(char [] [] gameBoard) {
@@ -97,9 +96,7 @@ public class TicTacToe {
 		case 9: gameBoard[4] [4] = symbol;
 		break;
 	}
-	printGameBoard(gameBoard);
-		
-		
+	    printGameBoard(gameBoard);
 	}
 	public static String checkWinner() {
 		
@@ -131,8 +128,6 @@ public class TicTacToe {
 				return "Draw";
 			}
 		}
-		
-		
 		
 		return "";
 	}
